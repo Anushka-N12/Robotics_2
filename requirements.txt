@@ -1,6 +1,7 @@
 ultralytics
 flask
 python3-opencv
+opencv-python
 numpy
 requests
 python-dotenv
