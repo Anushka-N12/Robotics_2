@@ -1,7 +1,6 @@
 ultralytics
 flask
-python3-opencv
-opencv-python
+opencv-python==4.9.0.80
 numpy
 requests
 python-dotenv
