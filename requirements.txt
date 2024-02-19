@@ -1,5 +1,6 @@
 ultralytics
 flask
-opencv-python
+opencv-python-headless
 numpy
 requests
+python-dotenv
