@@ -1,7 +1,6 @@
 ultralytics
 flask
-opencv-python==4.9.0.80
+opencv-python-headless==4.5.3.56
 numpy
 requests
 python-dotenv
-libgl1-mesa-glx 
