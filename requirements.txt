@@ -3,3 +3,4 @@ opencv-contrib-python-headless
 python-dotenv
 ultralytics
 requests
+gunicorn>=20.1.0
