@@ -81,9 +81,7 @@ def pred():
 
 
 if __name__ == '__main__':
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=os.getenv("PORT", default=5000))
-    app.run()
+    app.run(debug=True, port=os.getenv("PORT", default=5000))
     # print(model.names)
 
 # results = model(r'C:\Users\anush\Projects\Emirates_Robotics\venv\data\test\trash.mp4', show=True)
