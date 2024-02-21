@@ -1,19 +1,19 @@
 from flask import Flask, make_response, Response
 from ultralytics import YOLO
 import cam
-import cv2, json, os
+import json, os
 from dotenv import load_dotenv
-
 load_dotenv('.env')
 
 esp_cam = os.getenv('esp_cam')  
 
-app = Flask(__name__) 
-
+app = Flask(__name__)  
 bin_model = YOLO("bin_best.pt")
 trash_model = YOLO("trash_best.pt")
 
-@app.route('/pred', methods=['GET'])
+d = {}
+
+@app.route('/', methods=['GET'])
 def pred():
     # Take image
     print(cam.getimg(esp_cam))
@@ -57,16 +57,8 @@ def pred():
 
     # Send result
     # Create a JSON response and set custom header
-    d = {'coords': closest}
-    response = json.dumps([d])
-    response = Response(response, status=200, content_type='application/json')
-    response.headers['X-My-Header'] = 'foo'
-    return response, 200
+    d['trash'] = closest
 
-@app.route('/bin', methods=['GET'])
-def bin():
-    # Take image
-    print(cam.getimg(esp_cam))
     # Run through custom model 
     bin_results = bin_model('frame.jpg')
     # Filter by size
@@ -78,10 +70,10 @@ def bin():
         og_shape = result.orig_shape
         if True:
             bin = (((x2+x1)//2, (y2+y1)//2))  # Adding center coords of object to list
-
     # Send result
     # Create a JSON response and set custom header
-    d = {'coords': bin}
+    d['bin'] = bin
+
     response = json.dumps([d])
     response = Response(response, status=200, content_type='application/json')
     response.headers['X-My-Header'] = 'foo'
