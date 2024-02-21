@@ -1,6 +1,8 @@
 flask
+Flask-CORS
 opencv-contrib-python-headless
 python-dotenv
 ultralytics
 requests
+waitress
 gunicorn>=20.1.0
