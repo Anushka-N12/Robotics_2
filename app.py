@@ -82,6 +82,7 @@ def pred():
     response = json.dumps([d])
     response = Response(response, status=200, content_type='application/json')
     response.headers['X-My-Header'] = 'foo'
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return response, 200
 
 
